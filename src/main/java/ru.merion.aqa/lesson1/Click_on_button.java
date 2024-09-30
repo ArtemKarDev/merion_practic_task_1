@@ -7,7 +7,7 @@ import ru.merion.aqa.WebDriverFactory;
 
 import java.util.List;
 
-public class Practic1 {
+public class Click_on_button {
     public static void main(String[] args) {
 
         WebDriver driver = WebDriverFactory.create("chrome");
