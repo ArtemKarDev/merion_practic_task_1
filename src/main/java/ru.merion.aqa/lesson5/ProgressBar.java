@@ -2,7 +2,12 @@ package ru.merion.aqa.lesson5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
+
+import java.time.Duration;
 
 
 public class ProgressBar {
@@ -17,7 +22,9 @@ public class ProgressBar {
 
         driver.findElement(By.cssSelector("#startButton")).click();
 
-        String value = driver.findElement(By.cssSelector("#progressbar")).getAttribute("aria-valuenow");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60),Duration.ofMillis(100));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("#progressbar"),"75"));
+        //String value = driver.findElement(By.cssSelector("#progressbar")).getAttribute("aria-valuenow");
 
         driver.findElement(By.cssSelector("#stopButton")).click();
 
