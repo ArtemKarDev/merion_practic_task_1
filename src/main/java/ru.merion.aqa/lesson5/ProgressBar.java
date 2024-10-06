@@ -2,7 +2,6 @@ package ru.merion.aqa.lesson5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
@@ -28,7 +27,7 @@ public class ProgressBar {
 
         driver.findElement(By.cssSelector("#stopButton")).click();
 
-        System.out.println(value.equals("75"));
+        //System.out.println(value);
 
 
 
