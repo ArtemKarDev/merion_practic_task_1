@@ -20,7 +20,7 @@ public class ECDemo {
         // дождаться исчезнвения элемента
         wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(""))));
 
-        // дождаться точного кодичества жлкементов на странице
+        // дождаться точного количества элкементов на странице
         List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(""), 7));
         elements.clear();
         // дождаться видимости элемента

@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.function.Function;
 
 public class CustomEC {
     public static ExpectedCondition<WebElement> textContainsAfterRefresh(By locator,String textToContain) {
@@ -17,7 +14,6 @@ public class CustomEC {
                 WebElement element = driver.findElement(locator);
                 String text = element.getText();
                 return text.contains(textToContain) ? element : null;
-
             }
 
             @Override
