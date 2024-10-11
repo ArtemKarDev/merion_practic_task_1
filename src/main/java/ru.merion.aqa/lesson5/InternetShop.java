@@ -2,14 +2,23 @@ package ru.merion.aqa.lesson5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class InternetShop {
     public static void main(String[] args) {
+
+        Set<String> itemNames = new HashSet<>();
+        itemNames.add("Sauce Labs Backpack");
+        itemNames.add("Sauce Labs Bolt T-Shirt");
+        itemNames.add("Sauce Labs Onesie");
 
         WebDriver driver = WebDriverFactory.create("chrome");
         //  неявное ожидание
@@ -25,9 +34,20 @@ public class InternetShop {
         driver.findElement(By.cssSelector("#login-button")).click();
         //         Добавить в корзину товары:
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("div.inventory_item_description"),"Sauce Labs Backpack"));
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
+
+        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_items"));
+
+        for(WebElement item: items){
+            String productName = item.findElement(By.cssSelector(".inventory_item_name")).getText();
+            if (itemNames.contains(productName){
+                item.findElement(By.cssSelector("button")).click();
+            }
+        }
+
+//        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
+//        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
+//        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
+
         //        Перейти в корзину
         driver.findElement(By.cssSelector("a.shopping_cart_link")).click();
         //        Нажать Checkout
