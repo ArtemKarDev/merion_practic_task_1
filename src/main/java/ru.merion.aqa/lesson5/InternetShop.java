@@ -39,7 +39,7 @@ public class InternetShop {
 
         for(WebElement item: items){
             String productName = item.findElement(By.cssSelector(".inventory_item_name")).getText();
-            if (itemNames.contains(productName){
+            if (itemNames.contains(productName)){
                 item.findElement(By.cssSelector("button")).click();
             }
         }
