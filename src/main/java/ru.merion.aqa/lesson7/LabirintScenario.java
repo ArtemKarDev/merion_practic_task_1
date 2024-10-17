@@ -8,30 +8,25 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintScenario {
 
-    static WebDriver driver;
-    private static final By cartIconLocator = By.cssSelector(".b-header-b-personal-e-icon-count-m-cart")
-    public static void main(String[] args) {
-        WebDriver driver = WebDriverFactory.create("chrome");
+      public static void main(String[] args) {
+        WebDriver driver = WDFactory.create();
 
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        mainPage.searchFor("Java");
 
-        ResultPage resultPage = new ResultPage(driver);
+        ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
-        resultPage.checkIconText();
+        String iconText = resultPage.header.getIconText();
+        System.out.println(iconText);
 
-        CartPage cartPage = new CartPage(driver);
-        cartPage.open();
-        cartPage.checkCartCounter();
-        cartPage.checkCartPrice();
+        CartPage cartPage = resultPage.header.clickCartIcon();
+        String price = cartPage.getCartCounter();
+        String counter = cartPage.getCartPrice();
+
+        System.out.println(price);
+        System.out.println(counter);
 
         driver.quit();
-
-
     }
-
-
-
 
 }

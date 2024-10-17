@@ -21,12 +21,5 @@ public class MainPage extends BasePage{
         driver.get("https://www.labirint.ru");
     }
 
-    public void searchFor(String termin) {
-        WebElement form = driver.findElement(By.cssSelector("#searchform"));
-        form.findElement(By.cssSelector("#search-field")).sendKeys(termin);
-        form.submit();
-    }
-
-
 
 }

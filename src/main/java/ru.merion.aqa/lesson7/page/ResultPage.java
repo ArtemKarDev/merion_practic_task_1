@@ -10,8 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class ResultPage extends BasePage {
-    private static final By cartIconLocator = By.cssSelector(".b-header-b-personal-e-icon-count-m-cart")
-
+    private static final By cartIconLocator = By.cssSelector(".b-header-b-personal-e-icon-count-m-cart");
     public ResultPage(WebDriver driver) {
         super(driver);
     }
@@ -23,14 +22,12 @@ public class ResultPage extends BasePage {
             card.findElement(By.cssSelector(".buy-link")).click();
             counter++;
         }
+        // TODO: move too header
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBe(cartIconLocator, String.valueOf(counter)));
     }
 
-    public void checkIconText(){
-        String cartIconCounter = driver.findElement(cartIconLocator).getText();
-        System.out.println("Счетчик товаров в иконке Корзина = "+ cartIconCounter);
-    }
+
 
     public void checkEmptyResult(){
         String message = driver.findElement(By.cssSelector("h1")).getText();

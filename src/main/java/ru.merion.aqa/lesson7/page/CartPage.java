@@ -11,18 +11,12 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public void open(){
-        driver.findElement(cartIconLocator);
+    public String getCartCounter() {
+        return driver.findElement(By.cssSelector("#basket_default-prod-counter2")).getText();
     }
 
-    public void checkCartCounter() {
-        String cartCounter = driver.findElement(By.cssSelector("#basket_default-prod-counter2")).getText();
-        System.out.println("Счетчик товаров в корзине = "+ cartCounter);
-    }
-
-    public void checkCartPrice() {
-        String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText();
-        System.out.println("Цена = " + price);
+    public String getCartPrice() {
+        return driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText();
     }
 
 
