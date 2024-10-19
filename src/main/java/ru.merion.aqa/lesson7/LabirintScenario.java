@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson7;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
@@ -11,7 +12,7 @@ public class LabirintScenario {
       public static void main(String[] args) {
         WebDriver driver = WDFactory.create();
 
-        MainPage mainPage = new MainPage(driver);
+        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
