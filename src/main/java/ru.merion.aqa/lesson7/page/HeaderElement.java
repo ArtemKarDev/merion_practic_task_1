@@ -17,6 +17,8 @@ public class HeaderElement {
     private WebElement cartIcon;
 
 
+    private WebElement form;
+
     public HeaderElement(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, HeaderElement.class);
