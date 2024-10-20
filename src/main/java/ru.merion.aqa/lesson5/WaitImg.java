@@ -1,36 +1,24 @@
 package ru.merion.aqa.lesson5;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.merion.aqa.WebDriverFactory;
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.ElementsCollection;
 
 import java.time.Duration;
-import java.util.List;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class WaitImg {
     public static void main(String[] args) {
 
-
-        WebDriver driver = WebDriverFactory.create("chrome");
-        //  неявное ожидание
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        //  для явного ожидания
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-
         //  Открыть страницу
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
+        open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
         //        Дождаться загрузки 3й картинки
-        List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("#image-container img"), 3));
+        ElementsCollection images = $$("#image-container img").shouldHave(CollectionCondition.sizeGreaterThan(2),Duration.ofSeconds(10));
         //       Получить значение атрибута src у 3й картинки
-        String content = elements.get(2).getAttribute("src");
+        String content = images.get(2).getAttribute("src");
         //     Вывести его в консоль
         System.out.println(content);
 
-        driver.quit();
     }
 
 }

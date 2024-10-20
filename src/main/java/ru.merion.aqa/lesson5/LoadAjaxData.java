@@ -1,27 +1,24 @@
 package ru.merion.aqa.lesson5;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import ru.merion.aqa.WebDriverFactory;
-
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class LoadAjaxData {
     public static void main(String[] args) {
 
-        WebDriver driver = WebDriverFactory.create("chrome");
-        //  неявное ожидание
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        //  Открыть страницу
-        driver.get("http://uitestingplayground.com/ajax");
-        //  Нажать на синюю кнопку
-        driver.findElement(By.cssSelector("#ajaxButton")).click();
-        //  Получить текст из зеленой плашки
-        String content = driver.findElement(By.cssSelector("#content p")).getText();
-        //  Вывести его в консоль (”Data loaded with AJAX get request.”)
+    //  Открыть страницу
+        open("http://uitestingplayground.com/ajax");
+    //  Нажать на синюю кнопку
+        $("#ajaxButton").click();
+    //  Получить текст из зеленой плашки
+        String content = $("#content p")
+                .shouldBe(visible, Duration.ofSeconds(16))
+                .getText();
+    //  Вывести его в консоль (”Data loaded with AJAX get request.”)
         System.out.println(content);
-
-        driver.quit();
 
     }
 }
