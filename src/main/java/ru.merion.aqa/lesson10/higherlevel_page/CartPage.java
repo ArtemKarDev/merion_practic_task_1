@@ -1,0 +1,19 @@
+package ru.merion.aqa.lesson10.higherlevel_page;
+
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$;
+
+public class CartPage {
+
+    private final SelenideElement cartIcon = $("#baskert-default-sumprice-discount");
+    public String getCartPrice(){
+        return cartIcon.text();
+    }
+
+    public CartPage open() {
+        Selenide.open("/cart");
+        return this;
+    }
+}
