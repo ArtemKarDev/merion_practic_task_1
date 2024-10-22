@@ -7,9 +7,8 @@ import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class MainPage {
+public class MainPage extends BasePage{
 
-    private final SelenideElement searchInpput = $("#search-field");
 
     public  MainPage open() {
         Selenide.open("/");
@@ -21,9 +20,6 @@ public class MainPage {
 
     }
 
-    public ResultPage searchFor(String term) {
-        searchInpput.val(term).pressEnter();
-        return new ResultPage();
-    }
+
 
 }

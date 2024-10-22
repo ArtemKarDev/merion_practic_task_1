@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CartPage {
+public class CartPage extends BasePage{
 
     private final SelenideElement cartIcon = $("#baskert-default-sumprice-discount");
     public String getCartPrice(){
