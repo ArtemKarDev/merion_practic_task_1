@@ -7,6 +7,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class HeaderElement {
     private final SelenideElement mainMenu = $("#react-burger-menu-btn");
 
-    public
+
 
 }
