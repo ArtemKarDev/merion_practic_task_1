@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
+import okhttp3.logging.HttpLoggingInterceptor;
 import org.openqa.selenium.devtools.v85.io.IO;
 import ru.merion.aqa.lesson15.model.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class XClientsWebClient {
     private static final String LOGIN = "/auth/login";
-    private static final String COMPANY = "/company";
+    private static final String COMPANY = "company";
     private static final String COMPANY_DELETE = "/company/delete";
 
     private static final MediaType JSON = MediaType.get("application/json");
@@ -22,8 +23,12 @@ public class XClientsWebClient {
     private final ObjectMapper mapper;
 
     public XClientsWebClient(String url) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new MyCustomLogger());
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         mapper = new ObjectMapper();
-        client = new OkHttpClient();
+        client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).build();
+
         this.URL = url;
     }
 
@@ -45,10 +50,13 @@ public class XClientsWebClient {
         CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
         String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL).newBuilder().addPathSegment(COMPANY).build();
+
         Request request = new Request.Builder()
                 .post(requestBody)
                 .header("x-client-token", token)
-                .url(URL + COMPANY)
+                .url(url)
                 .build();
         Response response = client.newCall(request).execute();
         String jsonResponse = response.body().string();
@@ -67,6 +75,7 @@ public class XClientsWebClient {
             url.addQueryParameter("active", isActive.toString());
         }
         url.addPathSegment(COMPANY);
+        HttpUrl build = url.build();
 
         Request getAllCompanies = new Request.Builder()
                 .url(url.build())
@@ -95,7 +104,7 @@ public class XClientsWebClient {
 
     public Company setActive(int id, boolean isActive, String token) throws IOException {
         Request deleteCompanyById = new Request.Builder()
-                .patch()
+                .patch(null)
                 .header("x-client-token", token)
                 .url(URL + COMPANY + "/" + id)
                 .build();
@@ -105,7 +114,7 @@ public class XClientsWebClient {
 
     public Company updateCompany(int id, boolean isActive, String token) throws IOException {
         Request deleteCompanyById = new Request.Builder()
-                .patch()
+                .patch(null)
                 .header("x-client-token", token)
                 .url(URL + COMPANY + "/" + id)
                 .build();

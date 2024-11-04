@@ -21,7 +21,7 @@ public class XClientDemo {
         int newCompanyId = service.create("NewCompany2","test company 2", token);
 
         // получить список компаний
-     //   List<Company> companyList = service.getAll();
+        List<Company> companyList = service.getAll(false);
 
         // получить созданную компанию
         Company company = service.getById(newCompanyId);
