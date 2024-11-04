@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.merion.aqa.WebDriverFactory;
 
-import java.util.List;
-
 public class Click_on_button2 {
     public static void main(String[] args) {
 

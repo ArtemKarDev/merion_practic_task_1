@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -14,17 +13,18 @@ import static org.junit.Assert.assertEquals;
 public class RenameButton {
     private static final String BUTTON_NAME = "Merion";
 
-    @BeforeEach
-    public void open(){
-        driver = new ChromeDriver();
-    }
+//    @BeforeEach
+//    public open(){
+//        ChromeDriver driver = new ChromeDriver();
+//        return driver;
+//    }
 
-    @AfterEach
-    public void close(){
-        if(driver != null){
-            driver.quit();
-        }
-    }
+//    @AfterEach
+//    public void close(){
+//        if(driver != null){
+//            driver.quit();
+//        }
+//    }
 
     @Test
     public void iCanRenameTheButton() {

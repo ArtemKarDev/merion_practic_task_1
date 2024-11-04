@@ -1,7 +1,6 @@
 package ru.merion.aqa.lesson10.higherlevel_page;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 
 
 import java.util.List;

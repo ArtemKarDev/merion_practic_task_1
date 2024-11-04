@@ -2,7 +2,6 @@ package ru.merion.aqa.lesson7;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;

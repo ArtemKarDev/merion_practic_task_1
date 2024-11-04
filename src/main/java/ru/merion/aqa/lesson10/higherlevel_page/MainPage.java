@@ -1,7 +1,6 @@
 package ru.merion.aqa.lesson10.higherlevel_page;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 

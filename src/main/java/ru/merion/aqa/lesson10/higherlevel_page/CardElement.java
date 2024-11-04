@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson10.higherlevel_page;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-
-import java.security.SecureRandom;
 
 import static com.codeborne.selenide.Selenide.$;
 

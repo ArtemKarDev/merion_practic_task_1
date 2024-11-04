@@ -1,6 +1,5 @@
 package ru.merion.aqa.lesson6;
 
-import net.bytebuddy.implementation.bytecode.ShiftLeft;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;

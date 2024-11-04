@@ -31,7 +31,7 @@ public class ResultPage extends BasePage {
 
 
 
-    public String getEmptyResultMessage(){
-        return emptyResultMessage();
-    }
+//    public String getEmptyResultMessage(){
+//        return emptyResultMessage();
+//    }
 }

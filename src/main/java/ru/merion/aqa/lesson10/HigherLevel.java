@@ -3,7 +3,6 @@ package ru.merion.aqa.lesson10;
 import com.codeborne.selenide.Configuration;
 import ru.merion.aqa.lesson10.higherlevel_page.CartPage;
 import ru.merion.aqa.lesson10.higherlevel_page.MainPage;
-import ru.merion.aqa.lesson10.higherlevel_page.ResultPage;
 
 
 public class HigherLevel  {
