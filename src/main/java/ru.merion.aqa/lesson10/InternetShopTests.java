@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson10;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.Test;
 import ru.merion.aqa.lesson10.internetShop.CartPage;
 import ru.merion.aqa.lesson10.internetShop.CheckoutPage;
 import ru.merion.aqa.lesson10.internetShop.InventoryPage;
@@ -8,9 +9,13 @@ import ru.merion.aqa.lesson10.internetShop.LoginPage;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class InternetShopTests {
 
+    @Test
     public static void main(String[] args) {
 
         String Login = "standard_user";
@@ -34,6 +39,8 @@ public class InternetShopTests {
         cart = checkout.clickContinue();
 
         String result = cart.getResultPrice();
+
+        assertTrue(result.endsWith("55.29"));
 
     }
 }
