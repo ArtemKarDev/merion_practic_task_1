@@ -78,7 +78,7 @@ public class XClientsWebClient {
         HttpUrl build = url.build();
 
         Request getAllCompanies = new Request.Builder()
-                .url(url.build())
+                .url(build)
                 .build();
         Response response = client.newCall(getAllCompanies).execute();
 //        return mapper.readValue(response.body().string(), new TypeReference<List<Company>>() {});
@@ -88,7 +88,7 @@ public class XClientsWebClient {
 
 
     public Company getById(int id) throws IOException {
-        Request getCompanyById = new Request.Builder().url(URL + COMPANY + "/" + id).build();
+        Request getCompanyById = new Request.Builder().url(URL + "/"+ COMPANY + "/" + id).build();
         Response response = client.newCall(getCompanyById).execute();
         return mapper.readValue(response.body().string(), Company.class);
     }
