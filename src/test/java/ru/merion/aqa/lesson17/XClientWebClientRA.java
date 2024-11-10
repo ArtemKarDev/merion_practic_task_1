@@ -3,7 +3,6 @@ package ru.merion.aqa.lesson17;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
-import ru.merion.aqa.lesson15.XClientsWebClient;
 import ru.merion.aqa.lesson15.model.Company;
 
 import java.util.List;
