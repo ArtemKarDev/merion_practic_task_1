@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson18.contract;
 
+import com.atlassian.oai.validator.restassured.OpenApiValidationFilter;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -22,6 +23,8 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class XClientsCompanyTest {
+
+    public static final String SWAGGER = "https://x-clients-be.onrender.com/doc-json";
     public static final String URL = "https://x-clients-be.onrender.com";
     public static final String COMPANY_ENDPOINT = "/company";
     public static final String DELETE_ENDPOINT = "/company/delete/{id}";
@@ -60,6 +63,10 @@ public class XClientsCompanyTest {
                 .addHeader(X_CLIENT_TOKEN, getToken())
                 .setBasePath(DELETE_ENDPOINT)
                 .build();
+
+        OpenApiValidationFilter filter = new OpenApiValidationFilter(SWAGGER);
+        RestAssured.filters(filter);
+
 
     }
 
